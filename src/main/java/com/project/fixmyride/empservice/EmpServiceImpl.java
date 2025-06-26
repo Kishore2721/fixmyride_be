@@ -8,8 +8,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+
 import com.project.fixmyride.emprepositories.EmpRepository;
+import com.project.fixmyride.emprepositories.UserCarDetailsRepository;
 import com.project.fixmyride.empworksmodel.EmpWorksModel;
+import com.project.fixmyride.empworksmodel.UserCarDetails;
 
 
 
@@ -18,6 +21,8 @@ public class EmpServiceImpl implements EmpService {
 
 	@Autowired
 	private EmpRepository empRepository;
+	@Autowired
+	private  UserCarDetailsRepository userCarDetailsRepository;
 	
 	@Override
 	public ResponseEntity<List<EmpWorksModel>> viewall() {
@@ -32,5 +37,15 @@ public class EmpServiceImpl implements EmpService {
 		return new ResponseEntity<List<EmpWorksModel>>(new ArrayList<EmpWorksModel>(),HttpStatus.NOT_FOUND);
 	}
 
+	@Override
+	public ResponseEntity<UserCarDetails> addCar(UserCarDetails model) {
+		try {
+			return new ResponseEntity<UserCarDetails>(userCarDetailsRepository.save(model),HttpStatus.CREATED);
+		}
+		catch(Exception e) {
+			System.out.println(e);
+		}
+		return new ResponseEntity<UserCarDetails>(model,HttpStatus.INTERNAL_SERVER_ERROR);
+	}
 	
 }
