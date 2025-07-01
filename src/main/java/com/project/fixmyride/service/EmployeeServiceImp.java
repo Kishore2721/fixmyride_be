@@ -51,7 +51,7 @@ public class EmployeeServiceImp implements EmployeeService{
 			// TODO: handle exception
 			System.out.println(e);
 		}
-		return new ResponseEntity<EmployeeModel>(new EmployeeModel(),HttpStatus.NOT_FOUND);
+		return new ResponseEntity<EmployeeModel>(HttpStatus.NOT_FOUND);
 	}
 
 	@Override

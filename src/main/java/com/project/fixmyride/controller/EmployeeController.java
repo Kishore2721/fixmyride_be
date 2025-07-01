@@ -17,7 +17,7 @@ import com.project.fixmyride.service.EmployeeService;
 
 @RestController
 @RequestMapping("employee")
-@CrossOrigin(origins = "http://localhost:3000/")
+@CrossOrigin(origins = "http://localhost:3000")
 public class EmployeeController {
 		@Autowired
 		private EmployeeService service;
@@ -42,7 +42,7 @@ public class EmployeeController {
 		public ResponseEntity<EmployeeModel> deleteEmployee(@PathVariable Integer empId){
 			return service.deleteEmployee(empId);
 		}
-		// http://localhost:9090/employee/oneemp/20144
+		// http://localhost:9090/employee/oneemp/201
 		@GetMapping("oneemp/{empId}")
 		public ResponseEntity<EmployeeModel> viewOneEmployee(@PathVariable Integer empId){
 			return service.viewOneEmployee(empId);
